@@ -20,9 +20,10 @@ export default defineComponent({
   padding: 30px;
 
   a {
+    font-size: 14px;
     font-weight: bold;
     color: #2c3e50;
-    margin-right: 32px;
+    margin-right: 64px;
     text-transform: uppercase;
     text-decoration: none;
 
