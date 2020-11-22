@@ -34,7 +34,6 @@ export default defineComponent({
     },
     handler: {
       type: Function,
-      required: true,
     },
     inactive: {
       type: Boolean,

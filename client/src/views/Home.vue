@@ -83,13 +83,12 @@ export default defineComponent({
   img {
     display: block;
     margin: 0 auto;
-    margin-top: 32px;
-    width: 80%;
+    width: 90%;
   }
 
   .intro {
     position: absolute;
-    top: 0;
+    top: 90px;
 
     .bold {
       font-weight: bold;

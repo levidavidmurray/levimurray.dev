@@ -1,5 +1,5 @@
 <template>
-  <ion-card class="app-card">
+  <ion-card class="app-card" @click="openProjectModal" button>
     <img :src="project.image" />
     <ion-card-header>
       <ion-card-subtitle>{{ project.subtitle }}</ion-card-subtitle>
@@ -14,8 +14,9 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
-import {IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle} from '@ionic/vue';
+import {IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, modalController} from '@ionic/vue';
 import {ProjectCard} from '@/lib/ProjectCard';
+import ProjectModal from '@/components/ProjectModal.vue';
 
 export default defineComponent({
   name: 'AppCard',
@@ -25,9 +26,26 @@ export default defineComponent({
       required: true,
     }
   },
+
   setup(props) {
     console.log(props.project);
+    const openProjectModal = async () => {
+      const modal = await modalController.create({
+        component: ProjectModal,
+        componentProps: {
+          project: props.project,
+        },
+      });
+
+      return modal.present();
+    };
+
+    return {
+      openProjectModal,
+    };
   },
+
+
   components: {
     IonCard,
     IonCardHeader,

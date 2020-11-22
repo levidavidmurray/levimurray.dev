@@ -67,7 +67,11 @@ export default defineComponent({
       margin-left: 32px;
       text-decoration: none;
       color: unset;
-      font-weight: 700;
+      font-weight: bolder;
+
+      &:hover {
+        color: var(--ion-color-primary);
+      }
     }
   }
 
