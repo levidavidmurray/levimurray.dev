@@ -1,28 +1,36 @@
 <template>
-  <nav-bar/>
-  <router-view/>
+  <ion-app>
+    <ion-router-outlet :animated="false" />
+  </ion-app>
 </template>
 
 <script lang="ts">
+import {IonApp, IonRouterOutlet} from '@ionic/vue';
 import { defineComponent } from 'vue';
-import NavBar from '@/components/NavBar.vue';
 
 export default defineComponent({
+  name: 'App',
+
+  beforeRouteUpdate(to, from, next) {
+    console.log(to);
+    next();
+  },
 
   components: {
-    NavBar,
+    IonApp,
+    IonRouterOutlet,
   }
 });
-
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+@import './theme/global';
+
+.app-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 </style>

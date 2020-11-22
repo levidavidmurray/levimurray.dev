@@ -1,16 +1,22 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <app-page>
+    <div></div>
+  </app-page>
+
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {defineComponent} from 'vue';
+import AppPage from '../components/AppPage.vue';
 
 export default defineComponent({
-  name: 'About'
+  name: 'About',
+  components: {
+    AppPage,
+  },
 });
-
 </script>
 
-<style></style>
+<style scoped>
+
+</style>
