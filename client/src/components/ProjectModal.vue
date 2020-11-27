@@ -1,12 +1,10 @@
 <template>
-  <ion-page>
-    <ion-content class="ion-padding">
+  <ion-content class="ion-padding project">
 
-      <h1>{{ project.title }}</h1>
-      <p>{{ project.description }}</p>
+    <h1>{{ project.title }}</h1>
+    <p class="description">{{ project.description }}</p>
 
-    </ion-content>
-  </ion-page>
+  </ion-content>
 </template>
 
 <script lang="ts">
@@ -25,12 +23,19 @@ export default defineComponent({
   },
 
   components: {
-    IonPage,
     IonContent,
   },
 });
 </script>
 
 <style scoped lang="scss">
+
+.project {
+  .description {
+    white-space: pre-wrap;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+}
 
 </style>

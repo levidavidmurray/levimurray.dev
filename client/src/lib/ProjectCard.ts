@@ -5,4 +5,5 @@ export interface ProjectCard {
   title: string;
   subtitle: string;
   description: string;
+  summary: string;
 }

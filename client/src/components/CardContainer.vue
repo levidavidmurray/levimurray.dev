@@ -33,9 +33,7 @@ export default defineComponent({
       required: true,
     }
   },
-  setup(props) {
-    console.log(props.projects);
-  },
+
   computed: {
     sortedProjects() {
       const sorted: ProjectCard[][] = [];

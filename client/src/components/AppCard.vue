@@ -7,7 +7,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      {{ project.description }}
+      {{ project.summary }}
     </ion-card-content>
   </ion-card>
 </template>
@@ -27,23 +27,39 @@ export default defineComponent({
     }
   },
 
-  setup(props) {
-    console.log(props.project);
-    const openProjectModal = async () => {
+  methods: {
+    async openProjectModal() {
       const modal = await modalController.create({
         component: ProjectModal,
         componentProps: {
-          project: props.project,
+          project: this.project,
         },
       });
 
       return modal.present();
-    };
 
-    return {
-      openProjectModal,
-    };
+    },
   },
+
+  // setup(props) {
+  //   const openProjectModal = async () => {
+  //     const existingModal = await modalController.getTop();
+  //     await existingModal?.dismiss();
+  //
+  //     const modal = await modalController.create({
+  //       component: ProjectModal,
+  //       componentProps: {
+  //         project: props.project,
+  //       },
+  //     });
+  //
+  //     return modal.present();
+  //   };
+  //
+  //   return {
+  //     openProjectModal,
+  //   };
+  // },
 
 
   components: {
