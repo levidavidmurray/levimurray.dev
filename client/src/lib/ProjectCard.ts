@@ -1,4 +1,8 @@
 
+export interface ProjectLinks {
+  source: string;
+  project: string;
+}
 export interface ProjectCard {
   id: string;
   image: string;
@@ -6,4 +10,6 @@ export interface ProjectCard {
   subtitle: string;
   description: string;
   summary: string;
+  links: ProjectLinks;
+  images: Array<number>; // TODO: Image array
 }

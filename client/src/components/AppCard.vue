@@ -31,6 +31,7 @@ export default defineComponent({
     async openProjectModal() {
       const modal = await modalController.create({
         component: ProjectModal,
+        cssClass: 'app-modal',
         componentProps: {
           project: this.project,
         },
