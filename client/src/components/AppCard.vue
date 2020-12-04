@@ -54,6 +54,17 @@ export default defineComponent({
 
 <style scoped lang="scss">
 
+.app-card {
+  margin: 0;
+  width: 375px;
+  height: 370px;
+
+  img {
+    height: 191px;
+    width: 100%;
+  }
+}
+
 ion-card {
   --background: white;
 }

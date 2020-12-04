@@ -70,7 +70,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .image-carousel {
   padding: 16px 8px;
-  height: 364px;
+  height: 500px;
 }
 
 ion-slides {

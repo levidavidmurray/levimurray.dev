@@ -23,10 +23,10 @@ export default defineComponent({
   data() {
     const navButtons: RoundButtonOpts[] = [
       {
-        title: 'cases',
+        title: 'projects',
         icon: albumsOutline,
         inactive: false,
-        route: 'cases',
+        route: 'projects',
       },
       {
         title: 'resume',
