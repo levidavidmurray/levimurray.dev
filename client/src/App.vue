@@ -31,6 +31,23 @@ export default defineComponent({
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  position: relative;
+
+  img.hero-image {
+
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    z-index: -1;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    position: relative;
+    top: -68px;
+
+    &.abs {
+      position: absolute;
+    }
+  }
 }
 
 </style>

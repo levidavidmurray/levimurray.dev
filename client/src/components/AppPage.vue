@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content class="ion-padding">
-      <app-header></app-header>
+      <app-header :invert="invert"></app-header>
       <slot></slot>
     </ion-content>
   </ion-page>
@@ -14,6 +14,13 @@ import AppHeader from '@/components/AppHeader.vue';
 
 export default defineComponent({
   name: 'AppPage',
+
+  props: {
+    invert: {
+      type: Boolean,
+    },
+  },
+
   components: {
     IonPage,
     IonContent,

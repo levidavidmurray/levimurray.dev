@@ -1,12 +1,11 @@
 <template>
   <mobile-nav></mobile-nav>
-  <div class="app-header">
+  <div class="app-header" :class="{invert}">
     <div class="left">
-      <ion-icon :icon="mailOutline"></ion-icon>
       <a href="mailto:levi@levimurray.dev">levi@levimurray.dev</a>
     </div>
-    <div class="middle">
-      <router-link to="/cases">Cases</router-link>
+    <div :class="{middle: true, invert}">
+      <router-link to="/projects">Projects</router-link>
       <router-link to="/resume">Resume</router-link>
       <router-link to="/about-me">About Me</router-link>
       <router-link to="/contact">Contact</router-link>
@@ -17,12 +16,17 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 import {mailOutline} from 'ionicons/icons';
-import {IonIcon} from '@ionic/vue';
 import {RouterLink} from 'vue-router';
 import MobileNav from '@/components/MobileNav.vue';
 
 export default defineComponent({
   name: 'AppHeader',
+
+  props: {
+    invert: {
+      type: Boolean,
+    }
+  },
 
   setup() {
     return {
@@ -31,7 +35,6 @@ export default defineComponent({
   },
 
   components: {
-    IonIcon,
     RouterLink,
     MobileNav,
   },
@@ -49,9 +52,21 @@ export default defineComponent({
   justify-content: center;
   position: relative;
   width: 100%;
-  max-width: 1800px;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 16px 0;
 
+  --active-color: white;
+  --inactive-color: black;
+  --active-shadow: 0 0 1px black;
+  --inactive-shadow: none;
+
+  &.invert {
+    --active-color: black;
+    --inactive-color: white;
+    --active-shadow: none;
+    --inactive-shadow: 0 0 1px black;
+  }
 
   @media only screen and (max-width: 1100px) {
     justify-content: flex-end;
@@ -66,33 +81,42 @@ export default defineComponent({
     a {
       margin-left: 32px;
       text-decoration: none;
-      color: unset;
+      color: black;
       font-weight: bolder;
 
       &:hover {
-        color: var(--ion-color-primary);
+        color: white;
+        text-shadow: 0 0 1px black;
       }
     }
   }
 
   .middle {
+
     a {
       margin: 0 16px;
       text-decoration: none;
       text-transform: uppercase;
       font-weight: 600;
       font-size: 14px;
-      color: var(--ion-color-medium-tint);
-      transition: color ease-in 0.2s;
+      color: var(--inactive-color);
+      text-shadow: var(--inactive-shadow);
+      transition: color ease 0.2s, text-shadow ease 0.2s, transform ease-in-out 0.3s;
+      transform: translate3d(0,0,0);
+      display: inline-block;
 
       &:hover {
         cursor: pointer;
-        color: rgba(var(--ion-color-primary-rgb), 0.8);
+        color: var(--active-color);
+        text-shadow: var(--active-shadow);
+        transform: translate3d(0,-3px,0);
       }
 
       &.router-link-exact-active {
-        color: var(--ion-color-primary);
+        color: var(--active-color);
         position: relative;
+        text-shadow: var(--active-shadow);
+        transform: translate3d(0,-3px,0);
 
         &::before {
           content: "";
@@ -100,13 +124,13 @@ export default defineComponent({
           width: 5px;
           height: 5px;
           border-radius: 7.5px;
-          //background-color: #42b983;
-          background-color: var(--ion-color-primary);
+          background-color: var(--active-color);
           position: absolute;
           left: 0;
           right: 0;
           margin: auto;
           bottom: 24px;
+          box-shadow: var(--active-shadow);
         }
       }
 

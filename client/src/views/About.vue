@@ -1,8 +1,9 @@
 <template>
   <app-page>
-    <div></div>
+    <div class="app-content">
+      <img class="hero-image" src="../assets/images/levi-bw.jpeg" alt="">
+    </div>
   </app-page>
-
 </template>
 
 <script lang="ts">

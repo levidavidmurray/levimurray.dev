@@ -1,28 +1,22 @@
 <template>
   <app-page>
     <div class="app-content top-hero">
-      <img src="../assets/images/outline.png" alt="">
-      <div class="intro">
-        <h1 class="w bold">What's up?</h1>
-        <h2 class="m">My name's <span class="bold">Levi</span></h2>
-        <h2 class="i">I'm <span class="bold">23</span></h2>
-        <h4 class="a">and I never fucking learned how to code</h4>
-      </div>
+      <img class="hero-image" src="../assets/images/looking-in-distance.jpeg" alt="">
+      <project-gallery :projects="projects"/>
     </div>
-    <card-container :projects="projects"/>
   </app-page>
 </template>
 
 <script lang="ts">
 import {defineComponent, ref, Ref} from 'vue';
-import CardContainer from '@/components/CardContainer.vue';
+import ProjectGallery from '@/components/ProjectGallery.vue';
 import {mailOutline} from 'ionicons/icons';
 import AppPage from '@/components/AppPage.vue';
 import {ProjectService} from '@/lib/ProjectService';
 import {ProjectResponse} from '@/lib/api/api';
 
 export default defineComponent({
-  name: 'Home',
+  name: 'Projects',
 
   setup() {
 
@@ -41,7 +35,7 @@ export default defineComponent({
   },
 
   components: {
-    CardContainer,
+    ProjectGallery,
     AppPage,
   },
 });
@@ -51,12 +45,6 @@ export default defineComponent({
 
 .top-hero {
   position: relative;
-
-  img {
-    display: block;
-    margin: 0 auto;
-    width: 90%;
-  }
 
   .intro {
     position: absolute;

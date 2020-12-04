@@ -1,6 +1,8 @@
 <template>
   <app-page>
-    <div></div>
+    <div class="app-content">
+      <img class="hero-image" src="../assets/images/album-cover.jpeg" alt="">
+    </div>
   </app-page>
 </template>
 
