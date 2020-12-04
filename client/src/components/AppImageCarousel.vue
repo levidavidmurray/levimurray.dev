@@ -1,25 +1,25 @@
 <template>
   <div class="image-carousel">
-    <ion-slides :options="slideOpts" @ionSlidesDidLoad="onSlidesLoad" ref="slides">
-      <ion-slide v-for="image in project.images" :key="`${project.id}-${image}`">
-        <app-image/>
+    <ion-slides :options="slideOpts" :class="{'center': shouldCenter}" @ionSlidesDidLoad="onSlidesLoad" ref="slides">
+      <ion-slide v-for="image in project.showcase_images" :key="`${image.filename}-${image.created_at}`">
+        <MediaContent :media="image" />
       </ion-slide>
     </ion-slides>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType, Ref} from 'vue';
-import AppImage from '@/components/AppImage.vue';
-import {ProjectCard} from '@/lib/ProjectCard';
+import {defineComponent, PropType} from 'vue';
 import {IonSlide, IonSlides} from '@ionic/vue';
+import {ProjectResponse} from '@/lib/api/api';
+import MediaContent from '@/components/MediaContent.vue';
 
 export default defineComponent({
   name: 'AppImageCarousel',
 
   props: {
     project: {
-      type: Object as PropType<ProjectCard>,
+      type: Object as PropType<ProjectResponse>,
       required: true,
     },
     images: {
@@ -29,16 +29,18 @@ export default defineComponent({
 
   setup() {
     const slideOpts = {
-      slidesPerView: 3,
+      slidesPerView: 'auto',
       spaceBetween: 16,
       freeMode: true,
       pagination: {
         el: '.swiper-pagination',
-        clickable: true,
+        clickable: false,
       },
     };
 
-    return {slideOpts};
+    const tmpImages = [1, 2, 3, 4];
+
+    return {slideOpts, tmpImages};
   },
 
   methods: {
@@ -50,8 +52,14 @@ export default defineComponent({
     },
   },
 
+  computed: {
+    shouldCenter(): boolean {
+      return this.project.showcase_images?.length === 1;
+    },
+  },
+
   components: {
-    AppImage,
+    MediaContent,
     IonSlides,
     IonSlide,
   },
@@ -61,6 +69,23 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .image-carousel {
-  padding: 32px 32px 8px 0;
+  padding: 16px 8px;
+  height: 364px;
 }
+
+ion-slides {
+  height: 100%;
+  overflow: visible;
+
+  ion-slide {
+    width: fit-content;
+  }
+
+  &.center {
+    ion-slide {
+      width: 100%;
+    }
+  }
+}
+
 </style>

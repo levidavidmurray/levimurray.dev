@@ -5,11 +5,11 @@
       <h2>{{ project.title }}</h2>
 
       <div class="p-header-buttons">
-        <a class="p-link" :href="project.links.project" target="_blank">
+        <a class="p-link" :href="project.project_url" target="_blank">
           View Project
           <ion-icon :icon="enterOutline"/>
         </a>
-        <app-button :route="project.links.source"
+        <app-button :route="project.source_url"
                     :icon="logoGithub"
                     color="dark">
           Source
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <app-image-carousel :images="project.images" :project="project" />
+    <app-image-carousel :project="project" />
 
     <p class="description">{{ project.description }}</p>
 
@@ -27,17 +27,17 @@
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
 import {IonContent, IonIcon} from '@ionic/vue';
-import {ProjectCard} from '@/lib/ProjectCard';
 import AppButton from '@/components/AppButton.vue';
 import {enterOutline, logoGithub} from 'ionicons/icons';
 import AppImageCarousel from '@/components/AppImageCarousel.vue';
+import {ProjectResponse} from '@/lib/api/api';
 
 export default defineComponent({
   name: 'ProjectModal',
 
   props: {
     project: {
-      type: Object as PropType<ProjectCard>,
+      type: Object as PropType<ProjectResponse>,
       required: true,
     },
   },
