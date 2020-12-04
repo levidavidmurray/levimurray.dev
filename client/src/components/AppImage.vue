@@ -24,10 +24,12 @@ export default defineComponent({
 <style scoped lang="scss">
 
 .app-image {
-  width: 256px;
-  height: 172px;
-  background-color: grey;
   display: inline-block;
+
+  img {
+    border-radius: 8px;
+    height: 392px;
+  }
 }
 
 </style>

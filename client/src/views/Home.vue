@@ -15,19 +15,24 @@
 
 <script lang="ts">
 import {defineComponent, ref, Ref} from 'vue';
-import {ProjectCard} from '@/lib/ProjectCard';
 import CardContainer from '@/components/CardContainer.vue';
 import {mailOutline} from 'ionicons/icons';
 import AppPage from '@/components/AppPage.vue';
-import {dummyProjects} from '@/lib/DummyData';
+import {ProjectService} from '@/lib/ProjectService';
+import {ProjectResponse} from '@/lib/api/api';
 
 export default defineComponent({
   name: 'Home',
 
   setup() {
-    const projects: Ref<ProjectCard[]> = ref([
-      ...dummyProjects,
-    ]);
+
+    const projects: Ref<ProjectResponse[]> = ref([]);
+    ProjectService.fetchProjects()
+      .then((p) => projects.value = p);
+
+    // const projects: Ref<ProjectCard[]> = ref([
+    //   ...dummyProjects,
+    // ]);
 
     return {
       projects,

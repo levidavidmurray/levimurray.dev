@@ -22,6 +22,7 @@
 import {defineComponent, PropType} from 'vue';
 import AppCard from '@/components/AppCard.vue';
 import {ProjectCard} from '@/lib/ProjectCard';
+import {ProjectResponse} from '@/lib/api/api';
 
 const NUM_OF_COLUMNS = 3;
 
@@ -29,14 +30,14 @@ export default defineComponent({
   name: 'CardContainer',
   props: {
     projects: {
-      type: Array as PropType<ProjectCard[]>,
+      type: Array as PropType<ProjectResponse[]>,
       required: true,
     }
   },
 
   computed: {
     sortedProjects() {
-      const sorted: ProjectCard[][] = [];
+      const sorted: ProjectResponse[][] = [];
       let sortIndex = 0;
 
       for (let i = 0; i < this.projects.length; i++) {
