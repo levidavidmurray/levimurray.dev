@@ -1,13 +1,19 @@
 <template>
   <div class="project-gallery">
-    <app-card v-for="project in projects" :key="project.id" :project="project"/>
+    <template v-if="loader.isLoading">
+      <app-card v-for="n in loader.loadingCount" :key="`load-card-${n}`" loading />
+    </template>
+    <template v-else>
+      <app-card v-for="project in projects" :key="project.id" :project="project"/>
+    </template>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from 'vue';
+import {computed, defineComponent, PropType, toRefs} from 'vue';
 import AppCard from '@/components/AppCard.vue';
 import {ProjectResponse} from '@/lib/api/api';
+import {ProjectGalleryLoaderOpts} from '@/components/types';
 
 export default defineComponent({
   name: 'ProjectGallery',
@@ -16,6 +22,19 @@ export default defineComponent({
       type: Array as PropType<ProjectResponse[]>,
       required: true,
     },
+    loader: {
+      type: Object as PropType<ProjectGalleryLoaderOpts>,
+      required: true,
+    },
+  },
+
+  setup(props) {
+    const {loader, projects} = toRefs(props);
+    const hasProjects = computed(() => projects.value.length > 0);
+
+    return {
+      hasProjects,
+    };
   },
 
   components: {AppCard},

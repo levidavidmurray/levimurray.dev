@@ -3,6 +3,7 @@
     <ion-content class="ion-padding">
       <app-header :invert="invert"></app-header>
       <slot></slot>
+      <app-footer />
     </ion-content>
   </ion-page>
 </template>
@@ -11,6 +12,7 @@
 import {defineComponent} from 'vue';
 import {IonContent, IonPage} from '@ionic/vue';
 import AppHeader from '@/components/AppHeader.vue';
+import AppFooter from '@/components/AppFooter.vue';
 
 export default defineComponent({
   name: 'AppPage',
@@ -22,6 +24,7 @@ export default defineComponent({
   },
 
   components: {
+    AppFooter,
     IonPage,
     IonContent,
     AppHeader,

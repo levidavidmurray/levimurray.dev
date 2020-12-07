@@ -50,11 +50,11 @@ export default defineComponent({
   font-family: Montserrat, sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 16px 0;
 
   --active-color: white;
   --inactive-color: black;
@@ -94,7 +94,7 @@ export default defineComponent({
   .middle {
 
     a {
-      margin: 0 16px;
+      margin: 0 4px;
       text-decoration: none;
       text-transform: uppercase;
       font-weight: 600;
@@ -104,6 +104,7 @@ export default defineComponent({
       transition: color ease 0.2s, text-shadow ease 0.2s, transform ease-in-out 0.3s;
       transform: translate3d(0,0,0);
       display: inline-block;
+      padding: 12px 8px;
 
       &:hover {
         cursor: pointer;
@@ -129,7 +130,7 @@ export default defineComponent({
           left: 0;
           right: 0;
           margin: auto;
-          bottom: 24px;
+          bottom: 36px;
           box-shadow: var(--active-shadow);
         }
       }

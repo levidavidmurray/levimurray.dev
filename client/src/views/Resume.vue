@@ -2,13 +2,13 @@
   <app-page>
     <div class="app-content">
       <img class="hero-image abs" src="../assets/images/blue-steel.jpeg" alt="">
-      <div class="resume">
-        <div class="overlay" @click="downloadResume">
-          <ion-button @click="downloadResume">
+      <div class="resume-slide-in">
+        <div class="resume hover-scale">
+          <div class="overlay" @click="downloadResume">
             <ion-icon :icon="downloadOutline"></ion-icon>
-          </ion-button>
+          </div>
+          <img src="../assets/images/resume.png" alt="">
         </div>
-        <img src="../assets/images/resume.png" alt="">
       </div>
     </div>
   </app-page>
@@ -17,16 +17,28 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 import AppPage from '../components/AppPage.vue';
-import {IonButton, IonIcon} from '@ionic/vue';
+import {IonIcon} from '@ionic/vue';
 import {downloadOutline} from 'ionicons/icons';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'Resume',
 
   setup() {
-
     const downloadResume = () => {
-      alert("TODO: Download/Link PDF!");
+      // axios({
+      //   url: 'http://localhost:3030/resume.pdf', // TODO: API config
+      //   method: 'GET',
+      //   responseType: 'blob',
+      // }).then((response) => {
+      //   const url = window.URL.createObjectURL(new Blob([response.data]));
+      //   const link = document.createElement('a');
+      //   link.href = url;
+      //   link.setAttribute('download', 'Murray,Levi_Resume.pdf');
+      //   document.body.appendChild(link);
+      //   link.click();
+      // });
+      window.open('http://localhost:3030/resume.pdf', '_blank');
     };
 
     return {
@@ -37,7 +49,6 @@ export default defineComponent({
 
   components: {
     AppPage,
-    IonButton,
     IonIcon,
   },
 });
@@ -54,13 +65,16 @@ export default defineComponent({
   }
 }
 
+.resume-slide-in {
+  margin-left: -24px;
+  transform: translate3d(0,0,0);
+  animation: slide-in 0.75s ease forwards;
+}
+
 .resume {
   width: 600px;
   height: 776px;
-  margin-left: -24px;
   position: relative;
-  transform: translate3d(0,0,0);
-  animation: slide-in 1.75s ease forwards;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -84,15 +98,13 @@ export default defineComponent({
       cursor: pointer;
     }
 
-    ion-button {
-      width: 128px;
+    ion-icon {
       height: 64px;
-
-      ion-icon {
-        font-size: 41px;
-        position: relative;
-        top: -2px;
-      }
+      width: 128px;
+      font-size: 41px;
+      position: relative;
+      top: -2px;
+      color: white;
     }
   }
 }

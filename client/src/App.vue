@@ -32,6 +32,18 @@ export default defineComponent({
   width: 100%;
   margin: 0 auto;
   position: relative;
+  padding-bottom: 72px;
+
+  .hover-scale {
+    --scale-factor: 1.025;
+    transition: transform 0.3s ease;
+    z-index: 1;
+
+    &:hover {
+      transform: scale(var(--scale-factor));
+      z-index: 2;
+    }
+  }
 
   img.hero-image {
 

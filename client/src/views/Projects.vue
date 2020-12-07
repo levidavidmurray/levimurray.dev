@@ -2,80 +2,60 @@
   <app-page>
     <div class="app-content top-hero">
       <img class="hero-image" src="../assets/images/looking-in-distance.jpeg" alt="">
-      <project-gallery :projects="projects"/>
+      <project-gallery v-if="!shouldShowDialogue" :loader="loaderOpts" :projects="projects" />
+      <meta-dialogue v-else />
     </div>
   </app-page>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, Ref} from 'vue';
+import {defineComponent, ref, reactive, computed, Ref, UnwrapRef} from 'vue';
 import ProjectGallery from '@/components/ProjectGallery.vue';
 import {mailOutline} from 'ionicons/icons';
 import AppPage from '@/components/AppPage.vue';
 import {ProjectService} from '@/lib/ProjectService';
 import {ProjectResponse} from '@/lib/api/api';
+import MetaDialogue from '@/components/MetaDialogue.vue';
+import {ProjectGalleryLoaderOpts} from '@/components/types';
 
 export default defineComponent({
   name: 'Projects',
 
   setup() {
 
+    /** Reactive Variables */
     const projects: Ref<ProjectResponse[]> = ref([]);
-    ProjectService.fetchProjects()
-      .then((p) => projects.value = p);
+    const error: Ref<string | null> = ref(null);
+    const loaderOpts: UnwrapRef<ProjectGalleryLoaderOpts> = reactive({isLoading: true, loadingCount: 6});
 
-    // const projects: Ref<ProjectCard[]> = ref([
-    //   ...dummyProjects,
-    // ]);
+    /** Computed */
+    // Show meta-dialogue if error when fetching projects, or if loading is complete and no projects exist
+    const shouldShowDialogue = computed(() => {
+        return Boolean(error.value) || (!loaderOpts.isLoading && projects.value.length === 0);
+    });
+
+    ProjectService.fetchProjects()
+        .then((p) => projects.value = p)
+        .catch((err) => error.value = err)
+        .finally(() => loaderOpts.isLoading = false);
 
     return {
       projects,
       mailOutline,
+      error,
+      shouldShowDialogue,
+      loaderOpts,
     }
   },
 
   components: {
     ProjectGallery,
     AppPage,
+    MetaDialogue,
   },
 });
 </script>
 
 <style scoped lang="scss">
-
-.top-hero {
-  position: relative;
-
-  .intro {
-    position: absolute;
-    top: 90px;
-
-    .bold {
-      font-weight: bold;
-    }
-
-    .w {
-      font-size: 84px;
-    }
-
-    .m {
-      font-size: 64px;
-    }
-
-    .i {
-      font-size: 64px;
-    }
-
-    .a {
-      font-size: 32px;
-      color: var(--ion-color-primary);
-      background-color: white;
-      padding: 2px 8px;
-      font-weight: bold;
-    }
-
-  }
-
-}
 
 </style>

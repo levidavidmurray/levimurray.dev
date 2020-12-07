@@ -1,0 +1,1 @@
+portfolio-server: ./bin/rails s -p 3030 -e development
