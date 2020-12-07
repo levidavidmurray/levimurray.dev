@@ -1,5 +1,6 @@
 <template>
-  <ion-card :class="{loading, 'app-card': true, 'hover-scale': true}" @click="openProjectModal" button>
+  <ion-card :class="{loading, 'app-card': true, 'hover-scale': true}" button>
+
     <template v-if="loading">
       <ion-skeleton-text animated style="height: 190px; margin: 0;" />
       <ion-card-header>
@@ -12,6 +13,7 @@
         <ion-skeleton-text animated />
       </ion-card-content>
     </template>
+
     <template v-else-if="project">
       <img class="card-thumbnail" :src="project.thumbnail.link" />
       <ion-card-header>
@@ -22,10 +24,12 @@
         {{ project.summary }}
       </ion-card-content>
     </template>
+
     <div class="alert" v-else>
       <ion-icon :icon="alertCircleOutline"></ion-icon>
       <h4>Error loading data</h4>
     </div>
+
   </ion-card>
 </template>
 
@@ -57,25 +61,8 @@ export default defineComponent({
     },
   },
 
-  setup(props) {
-    const {project} = toRefs(props);
-
-    const openProjectModal = async () => {
-      if (project?.value) {
-        const modal = await modalController.create({
-          component: ProjectModal,
-          cssClass: 'app-modal',
-          componentProps: {
-            project: project.value,
-          },
-        });
-
-        return modal.present();
-      }
-    };
-
+  setup() {
     return {
-      openProjectModal,
       alertCircleOutline,
     }
   },

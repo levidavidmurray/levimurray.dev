@@ -1,4 +1,6 @@
 
+export const SERVER_HOST = "http://localhost:3030";
+
 export interface MediaResponse {
   byte_size: number;
   content_type: "image/jpeg" | "image/png" | "video/mp4";

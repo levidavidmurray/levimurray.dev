@@ -1,25 +1,48 @@
 <template>
   <ion-app>
-    <ion-router-outlet :animated="false" />
+    <transition name="fade">
+      <app-preloader v-if="showPreloader" @exit="handlePreloaderExit" :loading="isLoading"/>
+    </transition>
+    <ion-router-outlet v-if="!showPreloader" :animated="false"/>
   </ion-app>
 </template>
 
 <script lang="ts">
 import {IonApp, IonRouterOutlet} from '@ionic/vue';
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
+import AppPreloader from '@/components/AppPreloader.vue';
+import {preloadImagesAsync} from '@/lib/AppImages';
 
 export default defineComponent({
   name: 'App',
 
-  beforeRouteUpdate(to, from, next) {
-    console.log(to);
-    next();
+  data() {
+    return {
+      isLoading: true,
+      showPreloader: true,
+    };
+  },
+
+  mounted() {
+
+    preloadImagesAsync.finally(() => {
+      console.log("PRELOAD DONE!");
+      this.isLoading = false;
+    });
+
+  },
+
+  methods: {
+    handlePreloaderExit() {
+      this.showPreloader = false;
+    },
   },
 
   components: {
     IonApp,
     IonRouterOutlet,
-  }
+    AppPreloader,
+  },
 });
 </script>
 
@@ -31,7 +54,6 @@ export default defineComponent({
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  position: relative;
   padding-bottom: 72px;
 
   .hover-scale {
@@ -45,21 +67,22 @@ export default defineComponent({
     }
   }
 
-  img.hero-image {
-
-    display: block;
+  .hero-container {
     margin: 0 auto;
     width: 100%;
     z-index: -1;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
     position: relative;
     top: -68px;
 
-    &.abs {
-      position: absolute;
+    .hero-image {
+      width: 100%;
+
+      &.abs {
+        position: absolute;
+      }
     }
   }
+
 }
 
 </style>

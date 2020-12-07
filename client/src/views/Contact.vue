@@ -1,7 +1,6 @@
 <template>
-  <app-page>
+  <app-page :hero="hero" invert>
     <div class="app-content">
-      <img class="hero-image" src="../assets/images/album-cover.jpeg" alt="">
     </div>
   </app-page>
 </template>
@@ -9,9 +8,18 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 import AppPage from '../components/AppPage.vue';
+import {AppImages} from '@/lib/AppImages';
 
 export default defineComponent({
   name: "Contact",
+
+  setup() {
+
+    return {
+      hero: AppImages.ContactHero,
+    };
+  },
+
   components: {
     AppPage,
   }

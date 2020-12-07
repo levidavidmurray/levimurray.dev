@@ -4,16 +4,18 @@
       <app-card v-for="n in loader.loadingCount" :key="`load-card-${n}`" loading />
     </template>
     <template v-else>
-      <app-card v-for="project in projects" :key="project.id" :project="project"/>
+      <app-card v-for="project in projects" @click="openProjectModal(project)" :key="project.id" :project="project"/>
     </template>
   </div>
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, PropType, toRefs} from 'vue';
+import {computed, defineComponent, PropType, ref, toRefs} from 'vue';
 import AppCard from '@/components/AppCard.vue';
 import {ProjectResponse} from '@/lib/api/api';
 import {ProjectGalleryLoaderOpts} from '@/components/types';
+import {modalController} from '@ionic/vue';
+import ProjectModal from '@/components/ProjectModal.vue';
 
 export default defineComponent({
   name: 'ProjectGallery',
@@ -29,10 +31,44 @@ export default defineComponent({
   },
 
   setup(props) {
-    const {loader, projects} = toRefs(props);
+    const {projects} = toRefs(props);
     const hasProjects = computed(() => projects.value.length > 0);
 
+    // creating a new ion-modal while an existing one is still dismissing causes
+    // the modal contents to break
+    let canOpenProject = true;
+    let debouncedProject: ProjectResponse | null = null;
+
+    const openProjectModal = async (project: ProjectResponse) => {
+      if (canOpenProject) {
+        canOpenProject = false;
+
+        const modal = await modalController.create({
+          component: ProjectModal,
+          cssClass: 'app-modal',
+          componentProps: { project },
+        });
+
+        modal.onDidDismiss().then(() => {
+          canOpenProject = true;
+
+          // Modal has dismissed—open debounced project if exists
+          if (debouncedProject) {
+            openProjectModal(debouncedProject).then(() => {
+              debouncedProject = null;
+            });
+          }
+        });
+
+        return await modal.present();
+      } else {
+        // Project was opened while modal was dismissing—open after modal dismissal.
+        debouncedProject = project;
+      }
+    };
+
     return {
+      openProjectModal,
       hasProjects,
     };
   },

@@ -1,13 +1,12 @@
 <template>
-  <app-page>
+  <app-page :hero="hero">
     <div class="app-content">
-      <img class="hero-image abs" src="../assets/images/blue-steel.jpeg" alt="">
       <div class="resume-slide-in">
         <div class="resume hover-scale">
           <div class="overlay" @click="downloadResume">
             <ion-icon :icon="downloadOutline"></ion-icon>
           </div>
-          <img src="../assets/images/resume.png" alt="">
+          <img :src="resumeSrc" alt="Levi Murray's Resume">
         </div>
       </div>
     </div>
@@ -19,7 +18,7 @@ import {defineComponent} from 'vue';
 import AppPage from '../components/AppPage.vue';
 import {IonIcon} from '@ionic/vue';
 import {downloadOutline} from 'ionicons/icons';
-import axios from 'axios';
+import {AppImages} from '@/lib/AppImages';
 
 export default defineComponent({
   name: 'Resume',
@@ -44,6 +43,8 @@ export default defineComponent({
     return {
       downloadOutline,
       downloadResume,
+      hero: AppImages.ResumeHero,
+      resumeSrc: AppImages.ResumePreview?.currentSrc,
     };
   },
 
@@ -58,17 +59,23 @@ export default defineComponent({
 
 @keyframes slide-in {
   0% {
-    transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0) scale(0.85);
   }
   100% {
-    transform: translate3d(0,100px,0);
+    transform: translate3d(0,150px,0) scale(1);
   }
+}
+
+.app-content {
+  margin-bottom: 240px;
 }
 
 .resume-slide-in {
   margin-left: -24px;
   transform: translate3d(0,0,0);
-  animation: slide-in 0.75s ease forwards;
+  position: absolute;
+  top: 0;
+  animation: slide-in 1.1s ease forwards;
 }
 
 .resume {
@@ -92,6 +99,7 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     opacity: 0;
+    transition: opacity 0.15s ease;
 
     &:hover {
       opacity: 1;

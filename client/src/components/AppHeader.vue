@@ -51,10 +51,10 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
+  position: absolute;
+  top: 16px;
 
   --active-color: white;
   --inactive-color: black;
