@@ -18,7 +18,7 @@
         </ul>
       </div>
       <div class="right">
-        <p>&copy; 2020 Levi</p>
+        <p>&copy; 2020 Levi Murray</p>
         <p>All Rights Reserved</p>
       </div>
     </div>
@@ -47,9 +47,6 @@ ion-footer {
   padding: 16px;
   background: #e6eaf0;
   font-family: Montserrat, sans-serif;
-
-  --text-color-hard: #161920;
-  --text-color-soft: #5a5d64;
 
   .app-constraint {
     display: flex;

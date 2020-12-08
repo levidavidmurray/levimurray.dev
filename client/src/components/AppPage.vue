@@ -33,16 +33,9 @@ export default defineComponent({
 
   setup(props) {
     const {hero} = toRefs(props);
-    const heroImg: HTMLImageElement = hero.value;
-
-    console.log(heroImg.naturalWidth, heroImg.naturalHeight);
-
-    const bgImageStyle = {
-      backgroundImage: `url(${hero.value.currentSrc})`,
-    };
 
     return {
-      bgImageStyle,
+      bgImageStyle: { backgroundImage: `url(${hero.value.currentSrc})` },
     };
   },
 

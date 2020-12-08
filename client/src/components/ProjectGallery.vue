@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, PropType, ref, toRefs} from 'vue';
+import {computed, defineComponent, PropType, toRefs} from 'vue';
 import AppCard from '@/components/AppCard.vue';
 import {ProjectResponse} from '@/lib/api/api';
 import {ProjectGalleryLoaderOpts} from '@/components/types';
