@@ -1,15 +1,6 @@
 <template>
   <ion-page>
     <ion-content class="ion-padding-horizontal">
-<!--      <div class="top-content-mb">-->
-<!--        <div class="avatar-container">-->
-<!--          <ion-avatar>-->
-<!--            <img :src="hero.currentSrc" alt="">-->
-<!--          </ion-avatar>-->
-<!--          <linkedin-icon-link class="social linkedin" />-->
-<!--          <github-icon-link class="social github" />-->
-<!--        </div>-->
-<!--      </div>-->
       <div class="top-content" :style="bgImageStyle">
         <img :src="hero.currentSrc" alt="">
         <app-header :invert="invert"></app-header>
@@ -23,11 +14,9 @@
 
 <script lang="ts">
 import {defineComponent, PropType, toRefs} from 'vue';
-import {IonAvatar, IonContent, IonPage} from '@ionic/vue';
+import {IonContent, IonPage} from '@ionic/vue';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
-import LinkedinIconLink from '@/components/IconLink/LinkedinIconLink.vue';
-import GithubIconLink from '@/components/IconLink/GithubIconLink.vue';
 
 export default defineComponent({
   name: 'AppPage',
@@ -51,11 +40,8 @@ export default defineComponent({
   },
 
   components: {
-    // GithubIconLink,
-    // LinkedinIconLink,
     IonPage,
     IonContent,
-    // IonAvatar,
     AppHeader,
     AppFooter,
   },
@@ -98,45 +84,6 @@ $mobile-breakpoint: 576px;
   .top-content {
     margin-bottom: 24px;
   }
-
-  //.top-content {
-  //  display: none;
-  //}
-
-  //.top-content-mb {
-  //  display: flex;
-  //  padding: 16px 0;
-  //
-  //  .avatar-container {
-  //    width: fit-content;
-  //    height: fit-content;
-  //    margin: 0 auto;
-  //    position: relative;
-  //
-  //    .social {
-  //      position: absolute;
-  //      right: -24px;
-  //
-  //      &.github {
-  //        top: 0;
-  //      }
-  //
-  //      &.linkedin {
-  //        bottom: 0;
-  //      }
-  //    }
-  //
-  //    ion-avatar {
-  //      width: 128px;
-  //      height: 128px;
-  //      margin: 0 auto;
-  //      border: 5px solid white;
-  //      box-sizing: content-box;
-  //      box-shadow: 0 0 3px rgba(0,0,0,0.5);
-  //    }
-  //
-  //  }
-  //}
 }
 
 </style>

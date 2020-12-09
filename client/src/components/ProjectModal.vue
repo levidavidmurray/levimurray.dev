@@ -1,44 +1,50 @@
 <template>
-  <ion-header class="ion-padding p-header" ref="header">
-    <a :href="projectLink" target="_blank" :title="`Open ${projectLink}`" :class="{override: viewSourceOverride, 'overlay-url': true}">
-      {{ projectLinkText }}
-    </a>
+  <ion-content class="project">
+    <ion-header class="p-header" ref="header">
+      <a :href="projectLink" target="_blank" :title="`Open ${projectLink}`" :class="{override: viewSourceOverride, 'overlay-url': true}">
+        {{ projectLinkText }}
+      </a>
 
-    <div class="p-title">
-      <h2>{{ project.title }}</h2>
-      <h4>{{ project.subtitle }}</h4>
-    </div>
+      <div class="p-title">
+        <h2>{{ project.title }}</h2>
+        <h4>{{ project.subtitle }}</h4>
+      </div>
 
-    <div class="p-header-buttons">
-      <github-icon-link :href="project.source_url"
-                        @mouseover="viewSourceOverride = true"
-                        @mouseout="viewSourceOverride = false" />
-    </div>
-  </ion-header>
-  <ion-content class="ion-padding project">
-    <app-image-carousel :project="project" />
+      <div class="p-header-buttons">
+        <github-icon-link class="github-icon-link"
+                          :href="project.source_url"
+                          @mouseover="viewSourceOverride = true"
+                          @mouseout="viewSourceOverride = false" />
+        <close-button @click="closeModal" />
+      </div>
+    </ion-header>
 
-    <hr>
+    <div class="ion-padding">
+      <app-image-carousel :project="project" />
 
-    <p class="description">{{ project.description }}</p>
+      <hr>
 
-    <hr>
+      <p class="description">{{ project.description }}</p>
 
-    <footer class="ion-padding-vertical">
+      <hr>
+
+      <footer class="ion-padding-vertical">
         <a v-if="project.project_url" :href="project.project_url">Project: {{ project.project_url }}</a>
         <a v-if="project.source_url" :href="project.source_url">Source: {{ project.source_url }}</a>
-    </footer>
+      </footer>
+    </div>
 
   </ion-content>
 </template>
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
-import {IonContent, IonHeader} from '@ionic/vue';
-import {enterOutline} from 'ionicons/icons';
+import {IonContent, IonHeader, modalController} from '@ionic/vue';
+import {closeOutline, enterOutline} from 'ionicons/icons';
 import AppImageCarousel from '@/components/AppImageCarousel.vue';
 import {ProjectResponse} from '@/lib/api/api';
 import GithubIconLink from '@/components/IconLink/GithubIconLink.vue';
+import CloseButton from '@/components/CloseButton.vue';
 
 export default defineComponent({
   name: 'ProjectModal',
@@ -51,8 +57,15 @@ export default defineComponent({
   },
 
   setup() {
+
+    const closeModal = async () => {
+      await modalController.dismiss();
+    };
+
     return {
       enterOutline,
+      closeOutline,
+      closeModal,
     }
   },
 
@@ -89,6 +102,7 @@ export default defineComponent({
     IonHeader,
     AppImageCarousel,
     GithubIconLink,
+    CloseButton,
   },
 });
 </script>
@@ -172,6 +186,10 @@ export default defineComponent({
     display: flex;
     align-items: center;
 
+    .close-button {
+      display: none;
+    }
+
     .p-link {
       display: flex;
       align-items: center;
@@ -212,6 +230,30 @@ export default defineComponent({
       }
     }
   }
+}
+
+@media only screen and (max-width: 864px) {
+
+  .project {
+    .p-header {
+      .overlay-url {
+        display: none;
+      }
+
+      .github-icon-link {
+        display: none;
+      }
+
+      .close-button {
+        display: unset;
+        position: relative;
+        left: 16px;
+      }
+
+    }
+  }
+
+
 }
 
 </style>

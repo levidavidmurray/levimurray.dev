@@ -68,9 +68,16 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+
 .image-carousel {
   padding: 16px 8px;
   height: 500px;
+}
+
+@media only screen and (max-width: 576px) {
+  .image-carousel {
+    height: 400px;
+  }
 }
 
 ion-slides {
