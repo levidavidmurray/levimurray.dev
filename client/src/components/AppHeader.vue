@@ -1,9 +1,5 @@
 <template>
-  <mobile-nav></mobile-nav>
   <div class="app-header" :class="{invert}">
-    <div class="left">
-      <a href="mailto:levi@levimurray.dev">levi@levimurray.dev</a>
-    </div>
     <div :class="{middle: true, invert}">
       <router-link to="/projects">Projects</router-link>
       <router-link to="/resume">Resume</router-link>
@@ -17,7 +13,6 @@
 import {defineComponent} from 'vue';
 import {mailOutline} from 'ionicons/icons';
 import {RouterLink} from 'vue-router';
-import MobileNav from '@/components/MobileNav.vue';
 
 export default defineComponent({
   name: 'AppHeader',
@@ -36,7 +31,6 @@ export default defineComponent({
 
   components: {
     RouterLink,
-    MobileNav,
   },
 })
 </script>
@@ -66,10 +60,6 @@ export default defineComponent({
     --inactive-color: white;
     --active-shadow: none;
     --inactive-shadow: 0 0 1px black;
-  }
-
-  @media only screen and (max-width: 1100px) {
-    justify-content: flex-end;
   }
 
   .left {
@@ -143,13 +133,19 @@ export default defineComponent({
   }
 }
 
-@media only screen and (max-width: 900px) {
-  .mobile-nav {
-    display: flex;
-  }
-
+@media only screen and (max-width: 400px) {
   .app-header {
-    display: none;
+    .middle {
+      a {
+        font-size: 11px;
+
+        &.router-link-exact-active {
+          &::before {
+            bottom: 32px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

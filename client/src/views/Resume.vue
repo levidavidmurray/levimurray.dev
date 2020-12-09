@@ -79,12 +79,12 @@ export default defineComponent({
 }
 
 .resume {
-  width: 600px;
-  height: 776px;
+  width: 70%;
   position: relative;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background: white;
 
   img {
     width: 100%;
@@ -113,6 +113,36 @@ export default defineComponent({
       position: relative;
       top: -2px;
       color: white;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .resume-slide-in {
+    left: 0; right: 0;
+    margin: 0 auto;
+    width: fit-content;
+
+    .resume {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+
+  .app-content {
+    margin-bottom: 24px;
+  }
+
+  .resume-slide-in {
+    animation: none;
+    position: static;
+    width: 100%;
+
+    .resume {
+      width: 100%;
+      border-radius: 0;
     }
   }
 }

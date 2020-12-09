@@ -15,6 +15,9 @@ http://ionicframework.com/docs/theming/ */
   --color-gray-lightest: #d5dee3;
   --color-bluish-gray: #6d7579;
 
+
+  --mobile-breakpoint: 576px;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

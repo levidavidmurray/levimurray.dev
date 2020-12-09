@@ -1,6 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap');
 
+$mobile-breakpoint: var(--mobile-breakpoint);
+
 hr {
   background: var(--color-gray-lightest);
 }
@@ -18,6 +20,11 @@ hr {
   .modal-wrapper {
     --min-width: 864px;
     --min-height: 80vh;
+
+    @media only screen and (max-width: 864px) {
+      --min-width: 100%;
+      --min-height: 100vh;
+    }
   }
 
 }

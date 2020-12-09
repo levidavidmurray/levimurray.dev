@@ -91,6 +91,12 @@ ion-footer {
     }
 
   }
-
 }
+
+@media only screen and (max-width: 576px) {
+  ion-footer {
+    margin-left: unset;
+  }
+}
+
 </style>

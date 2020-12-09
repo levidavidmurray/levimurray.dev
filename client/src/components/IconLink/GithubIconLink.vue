@@ -3,6 +3,7 @@
              @mouseout="$emit('mouseout')"
              :icon="logoGithub"
              :href="githubHref"
+             v-bind="$attrs"
              active-color="var(--social-color-gh)" />
 </template>
 
