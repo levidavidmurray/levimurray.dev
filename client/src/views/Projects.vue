@@ -8,7 +8,7 @@
     </template>
     <div class="app-content">
       <project-gallery v-if="!shouldShowDialogue" :loader="loaderOpts" :projects="projects"/>
-      <meta-dialogue v-else/>
+      <meta-dialogue v-else />
     </div>
   </app-page>
 </template>
@@ -31,17 +31,16 @@ export default defineComponent({
   name: 'Projects',
 
   setup() {
-
     /** Reactive Variables */
     const projects: Ref<ProjectResponse[]> = ref([]);
     const error: Ref<string | null> = ref(null);
     const loaderOpts: UnwrapRef<ProjectGalleryLoaderOpts> = reactive({isLoading: true, loadingCount: 6});
 
     /** Computed */
-        // Show meta-dialogue if error when fetching projects, or if loading is complete and no projects exist
+    // Show meta-dialogue if error when fetching projects, or if loading is complete and no projects exist
     const shouldShowDialogue = computed(() => {
-          return Boolean(error.value) || (!loaderOpts.isLoading && projects.value.length === 0);
-        });
+      return Boolean(error.value) || (!loaderOpts.isLoading && projects.value.length === 0);
+    });
 
     ProjectService.fetchProjects()
         .then((p) => projects.value = p)
@@ -56,7 +55,7 @@ export default defineComponent({
       error,
       shouldShowDialogue,
       loaderOpts,
-      hero: AppImages.ProjectsHero,
+      hero: AppImages.ProjectsHero as HTMLImageElement,
       URL: Config.URL,
     };
   },

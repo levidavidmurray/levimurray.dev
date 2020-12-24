@@ -24,6 +24,7 @@ export default defineComponent({
   props: {
     invert: {
       type: Boolean,
+      required: false,
     },
     hero: {
       type: Object as PropType<HTMLImageElement>,

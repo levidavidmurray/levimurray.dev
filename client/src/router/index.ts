@@ -7,34 +7,39 @@ import Projects from '@/views/Projects.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    redirect: '/projects',
+    path: "/",
+    redirect: "/projects",
   },
   {
-    path: '/projects',
-    name: 'Projects',
+    path: "/projects",
+    name: "Projects",
     component: Projects,
   },
   {
-    path: '/resume',
-    name: 'Resume',
+    path: "/resume",
+    name: "Resume",
     component: Resume,
   },
   {
-    path: '/about-me',
-    name: 'About',
+    path: "/about-me",
+    name: "About",
     component: About,
   },
   {
-    path: '/contact',
-    name: 'Contact',
+    path: "/contact",
+    name: "Contact",
     component: Contact,
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-})
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return { el: to.hash };
+    }
+  },
+});
 
-export default router
+export default router;

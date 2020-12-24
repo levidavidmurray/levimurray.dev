@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_205008) do
+ActiveRecord::Schema.define(version: 2020_12_24_071620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 2020_12_02_205008) do
     t.string "source_url"
     t.string "project_url"
     t.index ["project_id"], name: "index_projects_on_project_id", unique: true
+  end
+
+  create_table "site_data", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "about_me_html"
+    t.string "about_me_md"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

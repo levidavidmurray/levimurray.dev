@@ -24,12 +24,7 @@ export default defineComponent({
   },
 
   mounted() {
-
-    preloadImagesAsync.finally(() => {
-      console.log("PRELOAD DONE!");
-      this.isLoading = false;
-    });
-
+    preloadImagesAsync.finally(() => this.isLoading = false);
   },
 
   methods: {

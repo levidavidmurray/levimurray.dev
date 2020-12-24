@@ -23,7 +23,10 @@ export default defineComponent({
       type: String,
       default: "_blank",
     },
-    title: String,
+    title: {
+      type: String,
+      required: false,
+    },
     color: {
       type: String,
       default: "white",

@@ -2,7 +2,7 @@
   <div class="image-carousel">
     <ion-slides :options="slideOpts" :class="{'center': shouldCenter}" @ionSlidesDidLoad="onSlidesLoad" ref="slides">
       <ion-slide v-for="image in project.showcase_images" :key="`${image.filename}-${image.created_at}`">
-        <MediaContent :media="image" />
+        <media-content :media="image" />
       </ion-slide>
     </ion-slides>
   </div>

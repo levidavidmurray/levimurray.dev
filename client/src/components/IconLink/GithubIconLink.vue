@@ -2,8 +2,8 @@
   <icon-link @mouseover="$emit('mouseover')"
              @mouseout="$emit('mouseout')"
              :icon="logoGithub"
-             :href="githubHref"
              v-bind="$attrs"
+             :href="href"
              active-color="var(--social-color-gh)" />
 </template>
 
@@ -19,19 +19,16 @@ export default defineComponent({
   inheritAttrs: false,
 
   props: {
-    href: String,
+    href: {
+      type: String,
+      default: Config.URL.github,
+    },
   },
 
   setup() {
     return {
       logoGithub,
     }
-  },
-
-  computed: {
-    githubHref(): string {
-      return this.href ? this.href : Config.URL.github;
-    },
   },
 
   components: {

@@ -24,7 +24,7 @@
 
       <hr>
 
-      <p class="description">{{ project.description }}</p>
+      <p class="description reader-text">{{ project.description }}</p>
 
       <hr>
 
@@ -163,10 +163,7 @@ export default defineComponent({
 
 .project {
   .description {
-    font-family: "Bitstream Charter", serif;
     white-space: pre-wrap;
-    line-height: 1.7;
-    font-size: 18px;
   }
 
   footer {

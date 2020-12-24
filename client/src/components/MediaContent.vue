@@ -23,7 +23,7 @@ export default defineComponent({
 
   data() {
     return {
-      styleBlacklist: ["schedule-explorer.mp4"],
+      styleBlacklist: ["schedule-explorer-0.mp4"],
     };
   },
 

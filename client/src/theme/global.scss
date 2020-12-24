@@ -5,6 +5,12 @@ hr {
   background: var(--color-gray-lightest);
 }
 
+.reader-text {
+  font-family: "Bitstream Charter", serif;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

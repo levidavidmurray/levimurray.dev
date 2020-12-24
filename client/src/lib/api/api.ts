@@ -1,5 +1,11 @@
 
+import axios from 'axios';
+
 export const SERVER_HOST = "http://localhost:3030";
+
+export const apiClient = axios.create({
+  baseURL: SERVER_HOST,
+});
 
 export interface MediaResponse {
   byte_size: number;
@@ -20,4 +26,9 @@ export interface ProjectResponse {
   source_url: string;
   thumbnail: MediaResponse;
   showcase_images: MediaResponse[];
+}
+
+export interface SiteDataResponse {
+  about_me_html: string;
+  about_me_md: string;
 }
