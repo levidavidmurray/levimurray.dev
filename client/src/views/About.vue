@@ -39,9 +39,23 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .about-me {
     width: 90%;
     margin: 0 auto;
+
+    img {
+      width: 360px;
+      clear: both;
+      &.fll {
+        float: left;
+        margin-right: 24px;
+      }
+      &.flr {
+        float: right;
+        margin-left: 24px;
+      }
+    }
   }
+
 </style>
