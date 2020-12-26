@@ -1,6 +1,6 @@
 <template>
   <a class="icon-link" v-bind="$attrs" :title="linkTitle" :target="target" ref="iconLink">
-    <ion-icon :icon="icon" />
+    <ion-icon :icon="icon" :class="{'no-drop': noDrop}" />
     <div class="bg-fill"></div>
   </a>
 </template>
@@ -42,6 +42,10 @@ export default defineComponent({
     activeBgColor: {
       type: String,
       default: "white",
+    },
+    noDrop: {
+      type: Boolean,
+      required: false,
     }
   },
 
@@ -109,6 +113,10 @@ a {
     transition: all 0.08s ease;
     filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.75));
     position: relative;
+
+    &.no-drop {
+      filter: none;
+    }
   }
 }
 

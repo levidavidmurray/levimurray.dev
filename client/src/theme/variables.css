@@ -2,11 +2,17 @@
 http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
+
+@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:wght@700&display=swap');
+
 :root {
+
+  --display-font: 'Bitstream Charter', serif;
 
   --ion-background-color: #edf2f8;
 
   --text-color-hard: #161920;
+  --text-color-medium: #444;
   --text-color-soft: #5a5d64;
   --background-secondary: #e6eaf0;
   --social-color-gh: #24292e;

@@ -2,23 +2,9 @@
   <ion-footer class="ion-no-border">
     <div class="app-constraint">
       <div class="left">
-        <ul>
-          <li>
-            <router-link to="/projects">Projects</router-link>
-          </li>
-          <li>
-            <router-link to="/resume">Resume</router-link>
-          </li>
-          <li>
-            <router-link to="/about-me">About Me</router-link>
-          </li>
-          <li>
-            <router-link to="/contact">Contact</router-link>
-          </li>
-        </ul>
       </div>
       <div class="right">
-        <p>&copy; 2020 Levi Murray</p>
+        <p>&copy; {{ year }} Levi Murray</p>
         <p>All Rights Reserved</p>
       </div>
     </div>
@@ -28,14 +14,18 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 import {IonFooter} from '@ionic/vue';
-import {RouterLink} from 'vue-router';
 
 export default defineComponent({
   name: 'AppFooter',
 
+  setup() {
+    return {
+      year: new Date().getFullYear(),
+    };
+  },
+
   components: {
     IonFooter,
-    RouterLink,
   },
 });
 </script>

@@ -1,15 +1,34 @@
 <template>
   <app-page :hero="hero">
     <template #top-content>
+      <header class="site-header">
+        <h1>Levi Murray</h1>
+      </header>
       <div class="socials">
-        <icon-link :href="URL.linkedin" :icon="logoLinkedin" active-color="var(--social-color-li)" />
+        <email-icon-link />
+        <linkedin-icon-link />
         <github-icon-link />
       </div>
     </template>
-    <div class="app-content">
+    <content-section title="Projects">
       <project-gallery v-if="!shouldShowDialogue" :loader="loaderOpts" :projects="projects"/>
       <meta-dialogue v-else />
+    </content-section>
+    <content-section title="About Me">
+      <expandable-content>
+        <about />
+      </expandable-content>
+    </content-section>
+    <content-section>
+      <div class="split-content">
+        <content-section title="Resume">
+          <resume />
+        </content-section>
+        <content-section title="Contact">
+          <contact />
+        </content-section>
     </div>
+    </content-section>
   </app-page>
 </template>
 
@@ -24,8 +43,15 @@ import MetaDialogue from '@/components/MetaDialogue.vue';
 import {ProjectGalleryLoaderOpts} from '@/components/types';
 import {AppImages} from '@/lib/AppImages';
 import {Config} from '@/lib/config';
+import About from './About.vue';
+import Resume from './Resume.vue';
+import Contact from './Contact.vue';
 import GithubIconLink from '@/components/IconLink/GithubIconLink.vue';
+import LinkedinIconLink from '@/components/IconLink/LinkedinIconLink.vue';
+import EmailIconLink from '@/components/IconLink/EmailIconLink.vue';
 import IconLink from '@/components/IconLink/IconLink.vue';
+import ContentSection from '@/components/ContentSection.vue';
+import ExpandableContent from '@/components/ExpandableContent.vue';
 
 export default defineComponent({
   name: 'Projects',
@@ -61,12 +87,19 @@ export default defineComponent({
   },
 
   components: {
-    IconLink,
     GithubIconLink,
+    LinkedinIconLink,
+    EmailIconLink,
     ProjectGallery,
     AppPage,
     MetaDialogue,
+    About,
+    Resume,
+    Contact,
+    ContentSection,
+    ExpandableContent,
   },
+
 });
 </script>
 
@@ -80,6 +113,32 @@ export default defineComponent({
 
   .icon-link {
     margin-right: 16px;
+  }
+}
+
+.site-header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  h1 {
+    font-family: var(--display-font);
+    font-size: 2em;
+    margin-left: 16px;
+    margin-bottom: 12px;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.split-content {
+  display: flex;
+}
+
+@media only screen and (max-width: 850px) {
+  .split-content {
+    display: block;
   }
 }
 

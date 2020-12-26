@@ -1,16 +1,11 @@
 <template>
-  <app-page :hero="hero">
-    <div class="app-content">
-      <div class="about-me reader-text" v-html="siteData">
+  <div class="about-me reader-text" v-html="siteData">
 
-      </div>
-    </div>
-  </app-page>
+  </div>
 </template>
 
 <script lang="ts">
 import {defineComponent, ref, Ref} from 'vue';
-import AppPage from '../components/AppPage.vue';
 import {AppImages} from '@/lib/AppImages';
 import {SiteDataService} from '@/lib/SiteDataService';
 import {SiteDataResponse} from '@/lib/api/api';
@@ -33,16 +28,15 @@ export default defineComponent({
     };
   },
 
-  components: {
-    AppPage,
-  },
 });
 </script>
 
 <style lang="scss">
   .about-me {
-    width: 90%;
-    margin: 0 auto;
+
+    p:nth-child(1), p:nth-child(2) {
+      margin: 0;
+    }
 
     img {
       width: 360px;
@@ -56,6 +50,13 @@ export default defineComponent({
         margin-left: 24px;
       }
     }
+
+    ol {
+      a {
+        color: var(--text-color-medium);
+      }
+    }
+
   }
 
 </style>

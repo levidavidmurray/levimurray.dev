@@ -1,10 +1,10 @@
 <template>
 
-  <div class="round-button" v-if="!route" :class="{inactive}">
-    <ion-fab-button @click="handler">
+  <div class="round-button" v-if="!route" :class="{inactive}" ref="roundButton">
+    <span class="rb-title">{{ title }}</span>
+    <ion-fab-button @click="handler" :class="buttonClass">
       <ion-icon :icon="icon"></ion-icon>
     </ion-fab-button>
-    <span class="rb-title">{{ title }}</span>
   </div>
 
   <router-link v-else :to="route">
@@ -26,7 +26,7 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      default: "TODO",
+      required: false,
     },
     icon: {
       type: String,
@@ -37,9 +37,27 @@ export default defineComponent({
     },
     inactive: {
       type: Boolean,
+      required: false,
     },
     route: {
       type: String,
+      required: false,
+    },
+    buttonClass: {
+      type: String,
+      default: "none",
+    },
+    color: {
+      type: String,
+      default: "black",
+    },
+  },
+
+  mounted() {
+    const roundButton: HTMLDivElement = this.$refs.roundButton as HTMLDivElement;
+
+    if (roundButton) {
+      roundButton.style.setProperty("--color", this.color);
     }
   },
 
@@ -85,19 +103,48 @@ ion-icon {
 }
 
 .round-button {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   width: fit-content;
   padding-bottom: 12px;
   margin: 0 8px 8px 8px;
+  font-size: 14px;
+
+  --rb-color: var(--color);
+
+  .rb-title {
+    color: var(--rb-color);
+    position: relative;
+    top: 12px;
+    font-weight: bold;
+  }
 
   ion-fab-button {
-    --background: none;
-    --background-focused: none;
-    --background-activated: none;
-    --background-hover: none;
-    --box-shadow: none;
-    --color: var(--ion-color-primary);
+    --color: var(--rb-color);
+
+    ion-icon {
+      color: var(--rb-color);
+      font-size: 24px;
+    }
+
+    &.none {
+      --background: none;
+      --background-focused: none;
+      --background-activated: none;
+      --background-hover: none;
+      --box-shadow: none;
+    }
+
+    &.generic {
+      --background: white;
+      --background-focused: white;
+      --background-activated: white;
+      --background-hover: white;
+      --box-shadow: unset;
+    }
+
   }
 
   &.inactive {

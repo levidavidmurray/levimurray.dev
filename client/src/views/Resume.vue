@@ -1,16 +1,10 @@
 <template>
-  <app-page :hero="hero">
-    <div class="app-content">
-      <div class="resume-slide-in">
-        <div class="resume hover-scale">
-          <div class="overlay" @click="downloadResume">
-            <ion-icon :icon="downloadOutline"></ion-icon>
-          </div>
-          <img :src="resumeSrc" alt="Levi Murray's Resume">
-        </div>
-      </div>
+  <div class="resume hover-scale">
+    <div class="overlay" @click="downloadResume">
+      <ion-icon :icon="downloadOutline"></ion-icon>
     </div>
-  </app-page>
+    <img :src="resumeSrc" alt="Levi Murray's Resume">
+  </div>
 </template>
 
 <script lang="ts">
@@ -49,7 +43,6 @@ export default defineComponent({
   },
 
   components: {
-    AppPage,
     IonIcon,
   },
 });
@@ -79,7 +72,7 @@ export default defineComponent({
 }
 
 .resume {
-  width: 70%;
+  width: 368px;
   position: relative;
   border-radius: 8px;
   overflow: hidden;

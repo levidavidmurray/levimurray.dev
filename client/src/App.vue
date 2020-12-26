@@ -45,22 +45,22 @@ export default defineComponent({
 
 @import './theme/global';
 
+.hover-scale {
+  --scale-factor: 1.025;
+  transition: transform 0.3s ease;
+  z-index: 1;
+
+  &:hover {
+    transform: scale(var(--scale-factor));
+    z-index: 2;
+  }
+}
+
 .app-content {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding-bottom: 72px;
-
-  .hover-scale {
-    --scale-factor: 1.025;
-    transition: transform 0.3s ease;
-    z-index: 1;
-
-    &:hover {
-      transform: scale(var(--scale-factor));
-      z-index: 2;
-    }
-  }
 
   .hero-container {
     margin: 0 auto;
