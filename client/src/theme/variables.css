@@ -3,8 +3,6 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 
-@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:wght@700&display=swap');
-
 :root {
 
   --display-font: 'Bitstream Charter', serif;
