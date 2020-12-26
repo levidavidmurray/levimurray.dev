@@ -8,8 +8,6 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import AppPage from '../components/AppPage.vue';
-import {AppImages} from '@/lib/AppImages';
 import GithubIconLink from '@/components/IconLink/GithubIconLink.vue';
 import LinkedinIconLink from '@/components/IconLink/LinkedinIconLink.vue';
 import EmailIconLink from '@/components/IconLink/EmailIconLink.vue';

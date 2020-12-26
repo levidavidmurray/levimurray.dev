@@ -1,7 +1,8 @@
 
 import axios from 'axios';
+import {Config} from '@/lib/config';
 
-export const SERVER_HOST = "http://localhost:3030";
+export const SERVER_HOST = Config.isDev ? Config.URL.serverDev : Config.URL.serverProd;
 
 export const apiClient = axios.create({
   baseURL: SERVER_HOST,

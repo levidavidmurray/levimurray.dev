@@ -49,7 +49,6 @@ import Contact from './Contact.vue';
 import GithubIconLink from '@/components/IconLink/GithubIconLink.vue';
 import LinkedinIconLink from '@/components/IconLink/LinkedinIconLink.vue';
 import EmailIconLink from '@/components/IconLink/EmailIconLink.vue';
-import IconLink from '@/components/IconLink/IconLink.vue';
 import ContentSection from '@/components/ContentSection.vue';
 import ExpandableContent from '@/components/ExpandableContent.vue';
 

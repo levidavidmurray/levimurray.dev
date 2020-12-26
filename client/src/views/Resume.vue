@@ -9,30 +9,16 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import AppPage from '../components/AppPage.vue';
 import {IonIcon} from '@ionic/vue';
 import {downloadOutline} from 'ionicons/icons';
 import {AppImages} from '@/lib/AppImages';
+import {SERVER_HOST} from '@/lib/api/api';
 
 export default defineComponent({
   name: 'Resume',
 
   setup() {
-    const downloadResume = () => {
-      // axios({
-      //   url: 'http://localhost:3030/resume.pdf', // TODO: API config
-      //   method: 'GET',
-      //   responseType: 'blob',
-      // }).then((response) => {
-      //   const url = window.URL.createObjectURL(new Blob([response.data]));
-      //   const link = document.createElement('a');
-      //   link.href = url;
-      //   link.setAttribute('download', 'Murray,Levi_Resume.pdf');
-      //   document.body.appendChild(link);
-      //   link.click();
-      // });
-      window.open('http://localhost:3030/resume.pdf', '_blank');
-    };
+    const downloadResume = () => window.open(SERVER_HOST + '/resume.pdf', '_blank');
 
     return {
       downloadOutline,
