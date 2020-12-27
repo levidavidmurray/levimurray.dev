@@ -3,9 +3,12 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+Pro&display=swap');
+
 :root {
 
-  --display-font: 'Bitstream Charter', serif;
+  --display-font: 'Bebas Neue', cursive;
+  --reader-font: 'Source Serif Pro', serif;
 
   --ion-background-color: #edf2f8;
 

@@ -6,7 +6,7 @@ hr {
 }
 
 .reader-text {
-  font-family: "Bitstream Charter", serif;
+  font-family: var(--reader-font);
   line-height: 1.7;
   font-size: 18px;
 }

@@ -48,7 +48,7 @@
   summary: 'An image hosting project for better understanding intricacies surrounding file uploads, persistence, and serving.'
   links:
     source: 'https://github.com/levidavidmurray/only_eve'
-    project: ''
+    project: 'https://onlyeve.levimurray.dev'
   images:
     - '/home/levi/levimurray.dev/server/dummy/only-eve/0.mp4'
 
