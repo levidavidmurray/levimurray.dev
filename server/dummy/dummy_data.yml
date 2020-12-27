@@ -1,6 +1,6 @@
 - title: Typetris
   project_id: typetris
-  thumbnail: '/home/levi/portfolio/server/dummy/typetris/thumbnail.jpg'
+  thumbnail: '/home/levi/levimurray.dev/server/dummy/typetris/thumbnail.jpg'
   subtitle: 'The tetris typing game!'
   description: 'Typetris was the result of me looking into how to use CSS grid. It started as more of a throwaway lesson for myself—rather than an intentional project. I quickly made the tetris connection as soon as I saw how easy it was to manipulate DOM element position using CSS grid. The typing aspect was my attempt to put a unique and personalized spin on the classic game as I’ve always enjoyed sites like typeracer.com for improving one’s typing ability. In the same vein, the style went through a few iterations—ultimately settling on the retro-monitor theme inspired by Fallout’s Pip-Boy.
 
@@ -11,13 +11,13 @@
     source: 'https://www.github.com/levidavidmurray/typetris'
     project: 'https://www.typetris.com'
   images:
-    - '/home/levi/portfolio/server/dummy/typetris/0.mp4'
-    - '/home/levi/portfolio/server/dummy/typetris/1.png'
-    - '/home/levi/portfolio/server/dummy/typetris/2.png'
+    - '/home/levi/levimurray.dev/server/dummy/typetris/0.mp4'
+    - '/home/levi/levimurray.dev/server/dummy/typetris/1.png'
+    - '/home/levi/levimurray.dev/server/dummy/typetris/2.png'
 
 - title: Airands
   project_id: airands
-  thumbnail: '/home/levi/portfolio/server/dummy/airands/thumbnail.jpg'
+  thumbnail: '/home/levi/levimurray.dev/server/dummy/airands/thumbnail.jpg'
   subtitle: 'Local delivery app for iOS & android'
   description: 'Airands was going to be an app that one could use to have anything (commercial or private) delivered locally. There are numerous delivery apps that exist for food, but what about general items? I can get a bowl of Pad Thai delivered for a cost, but what about a toilet plunger from Wal-Mart or a digital multimeter from Home Depot? Unless you own a car, or are okay with spending the time and money on public transit or taxis, your only real option is Amazon. That may be fine for most people, but if you’re anything like me—the majority of your online shopping is for things you can’t find locally or couldn’t find at a reasonable price. Personally, I’ll pay quite the premium and will sometimes even settle for less than ideal choices just for the gratification of continuing with whatever rabbit hole I’m down and not being held back by someone else’s schedule. I also have ADD though, so your mileage may vary.
 
@@ -31,11 +31,11 @@
     source: 'https://github.com/airands/airands'
     project: ''
   images:
-    - '/home/levi/portfolio/server/dummy/airands/0.mp4'
+    - '/home/levi/levimurray.dev/server/dummy/airands/0.mp4'
 
 - title: OnlyEve
   project_id: only-eve
-  thumbnail: '/home/levi/portfolio/server/dummy/only-eve/thumbnail.jpg'
+  thumbnail: '/home/levi/levimurray.dev/server/dummy/only-eve/thumbnail.jpg'
   subtitle: 'Host your lewd newds here!'
   description: 'OnlyEve is a full-stack project that I worked on to better understand some of the intricacies surrounding file uploads and persistence, as well as serving content. In standard fashion—I constructed the client using the Vue framework, and opted for Vuetify (a Material Design UI library) to help bootstrap the project.
 
@@ -50,11 +50,11 @@
     source: 'https://github.com/levidavidmurray/only_eve'
     project: ''
   images:
-    - '/home/levi/portfolio/server/dummy/only-eve/0.mp4'
+    - '/home/levi/levimurray.dev/server/dummy/only-eve/0.mp4'
 
 - title: Schedule Explorer
   project_id: schedule-explorer
-  thumbnail: '/home/levi/portfolio/server/dummy/schedule-explorer/thumbnail.jpg'
+  thumbnail: '/home/levi/levimurray.dev/server/dummy/schedule-explorer/thumbnail.jpg'
   subtitle: 'Schedule UI design implementation'
   description: 'This was a small UI implementation challenge that I had given myself to improve upon my existing front-end skills, and get a better grasp of the Vue framework. This schedule explorer is based off of a design I had found on dribbble.'
   summary: 'Vue UI implementation of a schedule explorer design found on dribbble; meant to practice my front-end abilities.'
@@ -62,11 +62,11 @@
     source: 'https://github.com/levidavidmurray/schedule-explorer'
     project: 'https://schedule.levimurray.dev/'
   images:
-    - '/home/levi/portfolio/server/dummy/schedule-explorer/0.mp4'
+    - '/home/levi/levimurray.dev/server/dummy/schedule-explorer/0.mp4'
 
 - title: PHN Generator
   project_id: phn-generator
-  thumbnail: '/home/levi/portfolio/server/dummy/phn-generator/thumbnail.jpg'
+  thumbnail: '/home/levi/levimurray.dev/server/dummy/phn-generator/thumbnail.jpg'
   subtitle: Generate valid BC & Ontario PHNs
   description: 'During the development of MyHealthAccess and CloudMD it became increasingly annoying to find valid Canadian health numbers to use for validation purposes.  Rather than implement some kind of development mode that bypasses HIN validation, I created this helper tool that follows provincial specifications to generate valid BC and Ontario Personal Health Numbers.'
   summary: 'Helper tool that generates personal health numbers following the BC & Ontario specification.'
@@ -74,5 +74,5 @@
     source: 'https://github.com/levidavidmurray/phn-generator'
     project: 'https://phn.levimurray.dev/'
   images:
-    - '/home/levi/portfolio/server/dummy/phn-generator/0.mp4'
+    - '/home/levi/levimurray.dev/server/dummy/phn-generator/0.mp4'
 

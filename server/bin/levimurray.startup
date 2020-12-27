@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source /home/levi/.bashrc
+pushd /home/levi/levimurray.dev/server
+/home/levi/.rbenv/shims/bundle exec puma -C config/puma.rb

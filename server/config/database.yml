@@ -6,8 +6,8 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
-  username: levimurray
-  password: test1234
+  username: levi
+  password: <%= ENV.fetch("LEVI_PG_PASS") %>
 
 development:
   <<: *default
@@ -23,5 +23,3 @@ test:
 production:
   <<: *default
   database: levimurray
-  username: levimurray
-  password: <%= ENV['LEVIMURRAY_DB_PASSWORD'] %>

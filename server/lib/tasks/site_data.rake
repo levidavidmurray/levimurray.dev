@@ -10,7 +10,7 @@ namespace :site_data do
       superscript: true,
     }
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
-    about = File.read('/home/levi/Documents/about-me.md')
+    about = File.read('/home/levi/about-me.md')
 
     site_data = SiteData.all.first
 
