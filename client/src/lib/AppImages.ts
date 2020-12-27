@@ -25,7 +25,7 @@ export const AppImages: { [N in AppImagesNames]: HTMLImageElement | null } = rea
 const rejectedImages: string[] = [];
 
 export const preloadImagesAsync = Promise.all(Object.entries(AppImagesFilenameMap).map((entry: [string, string]) => {
-  return loadImage(`${SERVER_HOST}/${entry[1]}`)
+  return loadImage(`${SERVER_HOST}/static/${entry[1]}`)
       .then((image) => {
         AppImages[entry[0] as AppImagesNames] = image;
       })
