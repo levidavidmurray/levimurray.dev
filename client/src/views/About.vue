@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import {defineComponent, ref, Ref} from 'vue';
-import {AppImages} from '@/lib/AppImages';
 import {SiteDataService} from '@/lib/SiteDataService';
 import {SiteDataResponse} from '@/lib/api/api';
 
@@ -23,7 +22,6 @@ export default defineComponent({
       });
 
     return {
-      hero: AppImages.AboutMeHero,
       siteData,
     };
   },
