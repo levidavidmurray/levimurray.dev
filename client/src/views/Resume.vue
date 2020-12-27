@@ -23,7 +23,6 @@ export default defineComponent({
     return {
       downloadOutline,
       downloadResume,
-      hero: AppImages.ResumeHero,
       resumeSrc: AppImages.ResumePreview?.currentSrc,
     };
   },

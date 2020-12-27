@@ -10,21 +10,15 @@ const loadImage: (src: string) => Promise<HTMLImageElement> = (src: string) => {
   });
 };
 
-type AppImagesNames = 'ProjectsHero' | 'ResumeHero' | 'AboutMeHero' | 'ContactHero' | 'ResumePreview';
+type AppImagesNames = 'ProjectsHero' | 'ResumePreview';
 
 const AppImagesFilenameMap: { [N in AppImagesNames]: string } = {
   ProjectsHero: 'projects-hero.jpeg',
-  ResumeHero: 'resume-hero.jpeg',
-  AboutMeHero: 'about-me-hero.jpeg',
-  ContactHero: 'contact-hero.jpeg',
   ResumePreview: 'resume-preview.png',
 };
 
 export const AppImages: { [N in AppImagesNames]: HTMLImageElement | null } = reactive({
   ProjectsHero: null,
-  ResumeHero: null,
-  AboutMeHero: null,
-  ContactHero: null,
   ResumePreview: null,
 });
 
