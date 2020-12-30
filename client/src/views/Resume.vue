@@ -13,12 +13,14 @@ import {IonIcon} from '@ionic/vue';
 import {downloadOutline} from 'ionicons/icons';
 import {AppImages} from '@/lib/AppImages';
 import {SERVER_HOST} from '@/lib/api/api';
+import {Config} from '@/lib/config';
 
 export default defineComponent({
   name: 'Resume',
 
   setup() {
-    const downloadResume = () => window.open(SERVER_HOST + '/resume.pdf', '_blank');
+    const hostUrl = Config.isDev ? SERVER_HOST : SERVER_HOST + '/static'
+    const downloadResume = () => window.open(hostUrl + '/resume.pdf', '_blank');
 
     return {
       downloadOutline,
